@@ -12,6 +12,10 @@ public class MessageController {
 
     @GetMapping
     public ResponseEntity<String> getMessage(){
+        System.out.println("dfgfgn");
         return new ResponseEntity<>("AYŞE KOÇ", HttpStatus.OK);
     }
+
+
+
 }
