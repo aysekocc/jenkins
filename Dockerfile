@@ -11,3 +11,13 @@ WORKDIR /app
 COPY --from=build /build/target/*.jar app.jar
 EXPOSE 8585
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+FROM jenkins/jenkins:lts-jdk21
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    rm -rf /var/lib/apt/lists/*
+
+USER jenkins

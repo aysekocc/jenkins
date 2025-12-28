@@ -2,30 +2,15 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Build Docker Image') {
+        stage('Docker Check') {
             steps {
-                sh 'docker build -t youtube-jenkins-app .'
+                sh 'docker ps'
             }
         }
 
-        stage('Stop Old Container') {
+        stage('Build Image') {
             steps {
-                sh '''
-                docker stop youtube-jenkins-app || true
-                docker rm youtube-jenkins-app || true
-                '''
-            }
-        }
-
-        stage('Run New Container') {
-            steps {
-                sh '''
-                docker run -d \
-                  --name youtube-jenkins-app \
-                  -p 8585:8585 \
-                  youtube-jenkins-app
-                '''
+                sh 'docker build -t aysekoc481/sample-app:latest .'
             }
         }
     }
