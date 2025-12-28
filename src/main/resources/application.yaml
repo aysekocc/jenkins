@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: youtube-jenkins
+
+server:
+  port: 8585
